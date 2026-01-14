@@ -5,12 +5,10 @@ import cors from 'cors'
 
 
 const app = express()
-const PORT = 3000
+const PORT = 9000
 
 app.use(express.json())
-app.use(cors({
-    origin:'https://computer.vercel.app'
-}))
+app.use(cors())
 app.use('/api' , APProuter)
 
 app.listen(PORT , ()=> console.log(`the server is running on port : ${PORT}`))
