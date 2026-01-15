@@ -1,68 +1,31 @@
-export const computers = async ()=>{
-  
-  try{
+const API = import.meta.env.VITE_API_URL;
 
-    const res = await fetch('https://computer-store-backend-2.onrender.com/api/computers')
-    const data = await res.json()
-    return data
+export const computers = async () => {
+  const res = await fetch(`${API}/api/computers`);
+  return await res.json();
+};
 
-  }catch(err){
-
-      return console.log('something wrong happend please try again')
-  }
-  
-}
-
-export const Order = async (id)=>{
-  
-  
-
-    const res = await fetch(`https://computer-store-backend-2.onrender.com/api/computers/${id}`)
-    const data = await res.json()
-    
-    if(!res.ok){
-      throw new Error(data.message || 'something wrong happend try again later')
-    }
-
-   return data;
-
-}
-
-export const postorders = async (form) => {
-  const res = await fetch("https://computer-store-backend-2.onrender.com/api/computers/orders" , {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      name: form.name,
-      phone: form.phone,
-      email: form.email,
-      product_id : form.product_id,
-    })
-  });
-
+export const Order = async (id) => {
+  const res = await fetch(`${API}/api/computers/${id}`);
   const data = await res.json();
 
-
-  if (!res.ok) {
-    throw new Error(data.message || "Request failed");
-  }
-
+  if (!res.ok) throw new Error(data.message);
   return data;
 };
 
-export const userOrders = async ()=>{
-  try{
+export const postorders = async (form) => {
+  const res = await fetch(`${API}/api/computers/orders`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(form)
+  });
 
-    const url = await fetch('https://computer-store-backend-2.onrender.com/api/computers/orders/userOrders')
- 
-    const data = await url.json()
-    return data;
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message);
+  return data;
+};
 
-  }catch(err){
-    return err.message
-  }
-
-
+export const userOrders = async () => {
+  const res = await fetch(`${API}/api/computers/orders/userOrders`);
+  return await res.json();
 };
