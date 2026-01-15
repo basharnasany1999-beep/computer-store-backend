@@ -10,7 +10,7 @@ const PORT = process.env.PORT ||  9000
 app.use(express.json())
 app.use(cors({
     origin: [  "http://localhost:5173",
-            "https://computer-store12.netlify.app/" ],
+            "https://computer-store12.netlify.app" ],
             methods : ['GET' , 'POST' , 'DELETE', 'PUT'],
             credentials: true,
 }))
