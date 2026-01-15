@@ -5,11 +5,14 @@ import cors from 'cors'
 
 
 const app = express()
-const PORT = 9000
+const PORT = process.env.PORT ||  9000
 
 app.use(express.json())
 app.use(cors({
-    origin: "http://localhost:5173"
+    origin: [  "http://localhost:5173",
+            "https://your-app.netlify.app" ],
+            methods : ['GET' , 'POST' , 'DELETE', 'PUT'],
+            credentials: true,
 }))
 app.use('/api' , APProuter)
 
