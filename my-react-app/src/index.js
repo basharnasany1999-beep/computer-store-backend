@@ -2,7 +2,7 @@ export const computers = async ()=>{
   
   try{
 
-    const res = await fetch('http://localhost:9000/api/computers')
+    const res = await fetch('https://computer-store-backend-2.onrender.com/api/computers')
     const data = await res.json()
     return data
 
@@ -17,7 +17,7 @@ export const Order = async (id)=>{
   
   
 
-    const res = await fetch(`http://localhost:9000/api/computers/${id}`)
+    const res = await fetch(`https://computer-store-backend-2.onrender.com/api/computers/${id}`)
     const data = await res.json()
     
     if(!res.ok){
@@ -29,7 +29,7 @@ export const Order = async (id)=>{
 }
 
 export const postorders = async (form) => {
-  const res = await fetch("http://localhost:9000/api/computers/orders" , {
+  const res = await fetch("https://computer-store-backend-2.onrender.com/api/computers/orders" , {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -55,7 +55,7 @@ export const postorders = async (form) => {
 export const userOrders = async ()=>{
   try{
 
-    const url = await fetch('http://localhost:9000/api/computers/orders/userOrders')
+    const url = await fetch('https://computer-store-backend-2.onrender.com/api/computers/orders/userOrders')
  
     const data = await url.json()
     return data;
